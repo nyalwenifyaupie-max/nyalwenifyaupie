@@ -1,0 +1,145 @@
+
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Goalline Jerseys</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+margin: 0;
+background: #f5f5f5;
+color: #222;
+}
+header {
+background: #0a0a23;
+color: white;
+padding: 40px 20px;
+text-align: center;
+}
+section {
+padding: 40px 20px;
+max-width: 900px;
+margin: auto;
+}
+.cta {
+background: white;
+padding: 30px;
+border-radius: 8px;
+box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Make inputs and buttons full width */
+input, textarea, button {
+  width: 100%;  /* full width of the container */
+  box-sizing: border-box; /* makes padding count inside width */
+}
+h1, h2 {
+margin-bottom: 10px;
+}
+p {
+margin-bottom: 20px;
+}
+form {
+display: grid;
+gap: 15px;
+}
+input, textarea, button {
+padding: 12px;
+font-size: 16px;
+border-radius: 5px;
+border: 1px solid #ccc;
+}
+button {
+background: #0a0a23;
+color: white;
+cursor: pointer;
+border: none;
+}
+button:hover {
+background: #1a1a4a;
+}
+footer {
+text-align: center;
+padding: 20px;
+font-size: 14px;
+color: #666;
+}
+</style>
+</head>
+<body>
+<header>
+<h1>Goalline Jerseys</h1>
+<p>Premium custom jerseys for teams, leagues & fans</p>
+</header>
+<section>
+<h2>Why Goalline?</h2>
+<p>
+We design and supply high-quality jerseys built for performance, comfort, and style.
+Whether you’re a local team or a serious competitor, we’ve got you covered.
+</p>
+</section>
+
+<section class="cta">
+<h2>Sign Up / Contact Us</h2>
+<p>Leave your details and we will get back to you with designs, pricing, and timelines.</p>
+
+ <form id="contactForm" action="https://formspree.io/f/mnjzeyaa" method="POST">
+      <label>Full Name:
+        <input type="text" name="name" required />
+      </label>
+      <label>Email:
+        <input type="email" name="email" required />
+      </label>
+      <label>Phone Number:
+        <input type="tel" name="phone" />
+      </label>
+      <label>Team / Club Name:
+        <input type="text" name="team" />
+         </label>
+      <label>Message:
+        <textarea name="message" rows="4" placeholder="Tell us what kind of jerseys you need" required></textarea>
+      </label>
+      <button type="submit">Submit</button>
+    </form>
+
+<p id="successMessage" style="display:none; color:blue; margin-top:15px;">Submitted! Thank you</p>
+</section>
+
+<footer>
+© 2026 Goalline Jerseys. All rights reserved.
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('contactForm');
+  const successMessage = document.getElementById('successMessage');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault(); // stop default form submission
+
+    const formData = new FormData(form);
+
+    fetch(form.action, {
+      method: form.method,
+      body: formData,
+    headers: {
+        'Accept': 'application/json'
+      }
+    })
+    .then(response => {
+      if (response.ok) {
+        successMessage.style.display = 'block'; // show message
+        form.reset(); // clear form
+      } else {
+        alert('Oops! There was a problem submitting your form.');
+      }
+    })
+    .catch(error => {
+      alert('Oops! There was a problem submitting your form.');
+    });
+  });
+  });
+</script>  
+
+</body>
+</html>
